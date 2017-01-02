@@ -217,13 +217,15 @@ function update(time = 0) {
 	dropCounter += deltaTime
 	if (dropCounter > dropInterval){
 		playerDrop();
+	} else if (player.score > 100 && player.score < 300) {
+		dropInterval = 500;
+	} else if ( player.score >= 300) {
+		dropInterval = 300;
 	}
+
 	draw();
 	requestAnimationFrame(update);
 }
-
-
-
 
 function updateScore() {
 	document.getElementById('score').innerText = 'Score: '+ player.score;
